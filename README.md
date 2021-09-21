@@ -6,7 +6,7 @@ Os capítulos a seguir abordam os temas em nível crescente de complexidade: cad
 
 ## Requisitos
 
-Para rodar os exemplos deste material é recomendada uma distribuição recente do Linux.
+Para rodar os exemplos deste material é recomendada uma versão recente de alguma distribuição Linux, como o [Ubuntu Desktop](https://ubuntu.com/download/desktop).
 
 ## Índice
 
