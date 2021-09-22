@@ -4,7 +4,7 @@ Esta seção aborda as ferramentas necessárias para rodar os exemplos deste mat
 
 Os procedimentos a seguir foram testados no Ubuntu Linux, mas podem também funcionar em outras distribuições do Linux.
 
-### Ferramentas instaladas nessa seção
+### Conteúdo desta seção
 
 * [Instalando o minikube](#minikube)
 * [Instalando o kubectl](#kubectl)
