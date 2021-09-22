@@ -11,7 +11,7 @@ Para rodar os exemplos deste material é recomendada uma versão recente de algu
 ## Índice
 
 0. Quais benefícios o Istio pode trazer à arquitetura da minha aplicação? 
-1. Instalando o Istio
+1. [Instalando as ferramentas necessárias](1-ferramentas.md)
 2. Definindo um operator
 3. Usando os serviços de exemplo
 4. Expondo serviços via gateways
