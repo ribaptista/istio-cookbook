@@ -54,7 +54,7 @@ Client Version: version.Info{Major:"1", Minor:"21", GitVersion:"v1.21.1", GitCom
 
 O [istioctl](https://istio.io/latest/docs/setup/install/istioctl/) é um utilitário de linha de comando (CLI) que facilita a instalação e configuração do Istio.
 
-Rode os sequintes comandos para baixar e instalar a versão 1.11.2 do istioctl:
+Rode os seguintes comandos para baixar e instalar a versão 1.11.2 do istioctl:
 
 ```shell
 curl -O https://storage.googleapis.com/istio-release/releases/1.11.2/istioctl-1.11.2-linux-amd64.tar.gz
