@@ -67,7 +67,7 @@ Verifique se o istioctl foi instalado corretamente:
 ```console
 ricardo@ricardo-A60-MUV:~/tmp$ istioctl version
 no running Istio pods in "istio-system"
-1.11.1
+1.11.2
 ```
 
 ### <a name="proximos_passos"></a> ⏭ Próximos passos
