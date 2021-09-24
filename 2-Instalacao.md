@@ -1,15 +1,17 @@
-# Instalando o Istio
+# 🔧 Instalando o Istio
 
 O Istio atua em um cluster de Kubernetes. 
 
 Esta seção aborda a criação de um cluster de Kubernetes, bem como a instalação do Istio no cluster recém-criado.
 
-## Conteúdo desta seção
+## 📋 Conteúdo desta seção
 
 * [Criando um cluster de Kubernetes](#criando_cluster)
 * [Instalando o Istio](#instalando_istio)
+* [Destruindo o cluster](#destruindo_cluster)
+* [Próximos passos](#proximos_passos)
 
-## <a name="criando_cluster"></a> Criando um cluster de Kubernetes
+## <a name="criando_cluster"></a> ✨ Criando um cluster de Kubernetes
 
 Neste passo usaremos a ferramenta `minikube`, instalada na seção anterior.
 
@@ -46,7 +48,7 @@ ricardo@ricardo-A60-MUV:~$ kubectl config current-context
 istio-exemplos
 ```
 
-## <a name="instalando_istio"></a> Instalando o Istio
+## <a name="instalando_istio"></a> ✨ Instalando o Istio
 
 Existem várias formas de se instalar o Istio, mas a mais fácil é a partir do seu *Operator*.
 
@@ -69,6 +71,8 @@ O `istioctl` sempre usa a mesma configuração atribuída ao `kubectl`.
 
 Portanto, sendo o nosso cluster `istio-exemplos` o atualmente ativado no kubectl, este será o cluster onde o istioctl instalará o operator do Istio.
 
+### 🔍 Verificando a instalação
+
 Podemos verificar a instalação do operator com os seguintes comandos:
 
 ```console
@@ -84,3 +88,36 @@ istio-operator-6547bf56c-q94jr   1/1     Running   0          7m32s
 ```
 
 Os valores `1/1` e `Running` na saída do comando acima indicam que o operator está em funcionamento.
+
+### ✅ Completando a instalação
+
+Para completar a instalação do operator, é necessário criar um _kubernetes resource_ do tipo `IstioOperator` em nosso cluster.
+
+[Nesta pasta](code/2-Instalacao) há um exemplo básico de um IstioOperator. 
+
+Para instalar o IstioOperator do exemplo, rode o comando abaixo dentro do diretório `code/2-Instalacao`:
+
+```console
+ricardo@ricardo-A60-MUV:~/istio-exemplos/code/2-Instalacao$ kubectl apply -f operator.yaml 
+istiooperator.install.istio.io/default created
+```
+
+Pronto! O setup feito nesta seção é o suficiente para colocarmos em prática os exemplos das próximas seções.
+
+## <a name="destruindo_cluster"></a> 💣 Destruindo o cluster
+
+Você pode decidir destruir toda a instalação feita nesta seção, tanto para praticar novamente a criação de clusters como para limpar o ambiente ao fim do dia.
+
+O cluster criado nesta seção pode ser completamente destruído (incluindo o operator do Istio) com o seguinte comando:
+
+```console
+ricardo@ricardo-A60-MUV:~$ minikube delete -p istio-exemplos
+🔥  Deleting "istio-exemplos" in docker ...
+🔥  Deleting container "istio-exemplos" ...
+🔥  Removing /home/ricardo/.minikube/machines/istio-exemplos ...
+💀  Removed all traces of the "istio-exemplos" cluster.
+```
+
+## <a name="proximos_passos"></a> ⏭ Próximos passos
+    
+🥳️🥳️🥳️ Parabéns! Agora você sabe como instalar o Istio em um cluster. Nas próximas seções começaremos a explorar as funcionalidades do Istio.
