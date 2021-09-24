@@ -15,6 +15,7 @@ async function getGreeting() {
       message: `Hello, ${response.data.name}!`,
     };
   } catch (e) {
+    console.error(e);
     greeting = {
       status: "err",
     };
@@ -31,6 +32,7 @@ async function getRecommendations() {
       movies: response.data,
     };
   } catch (e) {
+    console.error(e);
     recommendations = {
       status: "err",
     };

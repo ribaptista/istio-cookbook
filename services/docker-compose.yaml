@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  users:
+    build: users
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+    networks:
+      - istio-examples
+  movies:
+    build: movies
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+    networks:
+      - istio-examples
+  dashboard:
+    build: dashboard
+    ports:
+      - "3002:3002"
+    environment:
+      - PORT=3002
+      - USERS_URL=http://users:3000
+      - MOVIES_URL=http://movies:3001
+    networks:
+      - istio-examples
+networks:
+  istio-examples:
+    name: istio-examples
