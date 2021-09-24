@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: movies
+  labels:
+    name: movies
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movies
+  namespace: movies
+  labels:
+    app: movies
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: movies
+  template:
+    metadata:
+      labels:
+        app: movies
+    spec:
+      containers:
+        - name: movies
+          image: services_movies:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+          env:
+            - name: PORT
+              value: "80"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: movies
+  namespace: movies
+spec:
+  selector:
+    app: movies
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
