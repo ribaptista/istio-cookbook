@@ -8,6 +8,7 @@ Os procedimentos a seguir foram testados no Ubuntu Linux, mas podem também func
 
 * [Instalando o minikube](#minikube)
 * [Instalando o docker](#docker)
+* [Instalando o docker-compose](#docker-compose)
 * [Instalando o kubectl](#kubectl)
 * [Instalando o istioctl](#istioctl)
 * [Próximos passos](#proximos_passos)
@@ -33,7 +34,7 @@ minikube version: v1.21.0
 commit: 76d74191d82c47883dc7e1319ef7cebd3e00ee11
 ```
 
-### <a name="docker"></a> 🛠 Instalando o Docker
+### <a name="docker"></a> 🛠 Instalando o docker
 
 O [docker](https://www.docker.com/) é uma ferramenta para manipulação de imagens e containers. 
 
@@ -54,6 +55,24 @@ ricardo@ricardo-A60-MUV:~$ docker version
 ```
 
 O comando acima deverá emitir informações como a versão do docker e suas dependências.
+
+### <a name="docker"></a> 🛠 Instalando o docker-compose
+
+O [docker-compose](https://docs.docker.com/compose/) estende a funcionalidade do `docker`, permitindo manipular várias imagens e containers com um único comando.
+
+Para instalar o docker-compose, rode os comandos abaixo:
+
+```
+ricardo@ricardo-A60-MUV:~$ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+ricardo@ricardo-A60-MUV:~$ sudo chmod +x /usr/local/bin/docker-compose
+```
+
+Confira que a instalação foi bem sucedida com o comando:
+
+```console
+ricardo@ricardo-A60-MUV:~$ docker-compose --version
+docker-compose version 1.29.2, build 5becea4c
+```
 
 ### <a name="kubectl"></a> 🛠 Instalando o kubectl
 
