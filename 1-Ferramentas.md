@@ -7,6 +7,7 @@ Os procedimentos a seguir foram testados no Ubuntu Linux, mas podem também func
 ### 📋 Conteúdo desta seção
 
 * [Instalando o minikube](#minikube)
+* [Instalando o docker](#docker)
 * [Instalando o kubectl](#kubectl)
 * [Instalando o istioctl](#istioctl)
 * [Próximos passos](#proximos_passos)
@@ -31,6 +32,28 @@ ricardo@ricardo-A60-MUV:~$ minikube version
 minikube version: v1.21.0
 commit: 76d74191d82c47883dc7e1319ef7cebd3e00ee11
 ```
+
+### <a name="docker"></a> 🛠 Instalando o Docker
+
+O [docker](https://www.docker.com/) é uma ferramenta para manipulação de imagens e containers. 
+
+Uma vez que toda aplicação rodando em um cluster de Kubernetes é baseada em containers e imagens, o docker será essencial para o setup de nosso ambiente.
+
+Para instalar o docker, rode os seguintes comandos:
+
+```shell
+sudo apt-get remove docker docker-engine docker.io containerd runc
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+```
+
+Verifique que o docker foi instalado corretamente com o seguinte comando:
+
+```console
+ricardo@ricardo-A60-MUV:~$ docker version
+```
+
+O comando acima deverá emitir informações como a versão do docker e suas dependências.
 
 ### <a name="kubectl"></a> 🛠 Instalando o kubectl
 
