@@ -1,13 +1,16 @@
-# Instalando a aplicação de exemplo
+# 📦 Instalando a aplicação de exemplo
 
 As funcionalidades do Istio são melhor entendidas quando aplicadas em uma aplicação presente no cluster.
 
 Nesta seção o cluster criado na seção anterior será populado com uma aplicação de exemplo.
 
-## Conteúdo desta seção
+## 📋 Conteúdo desta seção
 
 * [Sobre a aplicação de exemplo](#sobre)
+* [Build das imagens da aplicação](#build)
 * [Instalando a aplicação de exemplo](#instalando)
+* [Testando a aplicação](#testando)
+* [Próximos passos](#proximos_passos)
 
 ## <a name="sobre"></a> Sobre a aplicação de exemplo
 
@@ -21,12 +24,12 @@ A aplicação é composta por três microsserviços:
 * **movies**: lida com dados de filmes, bem como recomendações de filmes para o usuário logado
 * **dashboard**: um serviço agregador, que reúne informações dos dois serviços acima
 
-## <a name="ferramentas"></a> Ferramentas necessárias
+## <a name="ferramentas"></a> 🔧 Ferramentas necessárias
 
 Para instalar os três microsserviços apresentados acima em nosso cluster, usaremos as ferramentas `minikube`, `docker-compose` e `kubectl`,
 todas instaladas na [primeira seção](1-Ferramentas.md) deste material.
 
-## <a name="build"></a> Build das imagens da aplicação
+## <a name="build"></a> 📦 Build das imagens da aplicação
 
 Para rodar a aplicação de exemplo no cluster, cada um dos três microsserviços que a compõem deve estar previamente empacotado em uma imagem docker.
 
@@ -69,7 +72,7 @@ services_users                            latest     d318530fcc1b   25 hours ago
 
 As imagens `services_dashboard`, `services_movies` e `services_users` devem constar na lista de imagens do registry.
 
-## <a name="instalando"></a> Instalando a aplicação de exemplo
+## <a name="instalando"></a> ⚙️ Instalando a aplicação de exemplo
 
 Com as imagens dos microsserviços agora disponíveis no registry do cluster do minikube é possível agora rodar a aplicação.
 
@@ -110,7 +113,7 @@ dashboard-f9dd87b74-fxxxr   1/1     Running   0          3m42s
 
 Os valores `1/1` na coluna `READY` e `Running` na coluna `STATUS` indicam que todos os microsserviços estão em funcionamento e prontos para atender requests.
 
-## <a name="testando"></a> Testando a aplicação
+## <a name="testando"></a> 💣 Testando a aplicação
 
 Com a aplicação devidamente inicializada, prosseguiremos para fazer requests aos seus microsserviços.
 
@@ -164,9 +167,9 @@ Tente utilizar o mesmo comando `kubectl port-forward` que utilizamos acima, por�
 
 O serviço *movies* possui os paths `/top` e `/recommended/user/101`.
 
-Já o serviço *dashboard* possuir o path `/main`
+Já o serviço *dashboard* possuir o path `/main`.
 
-## Próximos passos
+## <a name="proximos_passos"></a> 👉 Próximos passos
 
 Parabéns! Com a aplicação de exemplo rodando no cluster, temos o cenário necessário para começar a explorar as funcionalidades do Istio na próxima seção.
 
