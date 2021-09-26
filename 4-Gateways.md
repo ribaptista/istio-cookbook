@@ -135,6 +135,63 @@ Você consegue encontrar um padrão nas URLs acima? Qual trecho da URL parece in
 
 ## <a name="roteamento"></a> Roteamento com Virtual Services
 
+Neste tópico vamos explorar os arquivos de *virtual services* que aplicamos no cluster.
+
+Um virtual service é a configuração responsável por determinar como um microsserviço específico no cluster será exposto por um gateway.
+
+Vamos tomar como exemplo o virtual service do serviço *users*, declarado [neste arquivo](code/4-Gateway/virtualservice-users.yaml).
+
+O trecho a seguir do arquivo associa este virtual service ao gateway que criamos nesta seção:
+
+```yaml
+  gateways:
+    - my-sample-app
+```    
+
+Perceba que a associação é feita pelo nome do gateway. Você pode conferir acima, no tópico [Instalação do gateway](#instalacao),
+o nome do gateway criado, ou ainda a propriedade `metadata.name` no [arquivo](code/4-Gateway/gateway.yaml) de declaração do gateway.
+
+Já o trecho a seguir indica que este virtual service será responsável por lidar com qualquer request cujo path da URL comece com `/users/`:
+
+```yaml
+    - match:
+        - uri:
+            prefix: /users/
+```
+
+Portanto, URLs como 
+
+* `http://my-sample-app.io/users/profile`
+* `http://my-sample-app.io/users/healthcheck` 
+* `http://my-sample-app.io/users/foo`
+
+serão roteados para este virtual service, uma vez que todos tem o path iniciando com o padrão `/users/`.
+
+Finalmente, o trecho abaixo indica que todos os requests que chegarem a este virtual service deve ser encaminhados ao *kubernetes service* *users*:
+
+```yaml
+        - destination:
+            host: users.users.svc.cluster.local
+```            
+
+### 🦾 Desafio
+
+Digamos que a partir de agora o microsserviço *users* deve ser acessível pelo gateway a partir da seguinte URL:
+
+```
+http://my-sample-app.io/account/profile
+```
+
+Repare que o prefixo foi alterado de `users` para `account`.
+
+Você consegue identificar qual arquivo de configuração deve ser alterado para realizar o efeito acima?
+
+💡 Dica: depois de alterar o arquivo, rode o comando abaixo para aplicar as alterações no cluster:
+
+```console
+ricardo@ricardo-A60-MUV:~/istio-exemplos/code/4-Gateway$ kubectl apply -k .
+```
+
 ### 💡💡💡 Importante!
 
 É importante entender a diferença entre *ingress gateways*, *gateways* e *virtual services*: 
@@ -150,5 +207,7 @@ Por fim, teríamos um *virtual service* para cada microsserviço, ou *service* d
 Um virtual service está normalmente associado a um *gateway*, e, dos requests que chegam ao gateway, atende apenas a parcela que
 é destinada ao microsserviço em que atua.
 
+## <a name="proximos_passos"></a> Próximos passos
 
+Muito bom! 🎉🎉🎉 Agora você já sabe como criar gateways para tornar os microsserviços no cluster acessíveis na Internet.
 
