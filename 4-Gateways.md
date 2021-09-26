@@ -1,6 +1,6 @@
 # ⛩️ Utilizando o Istio como gateway
 
-Na [seção anterior](3-Servicos.md) instalamos e inicializamos três microsserviços que compõe a nossa aplicação de exemplo: *users*, *movies* e *dashboard*.
+Na [seção anterior](3-Servicos.md) instalamos e inicializamos três microsserviços que compõem a nossa aplicação de exemplo: *users*, *movies* e *dashboard*.
 
 Porém constatamos que tais serviços não são acessíveis de fora do cluster, pois foram configurados para assumir o tipo `ClusterIP`.
 
