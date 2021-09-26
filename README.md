@@ -14,7 +14,7 @@ Para rodar os exemplos deste material é recomendada uma versão recente de algu
 1. [Instalando as ferramentas necessárias](1-Ferramentas.md)
 2. [Instalando o Istio em um cluster de Kubernetes](2-Instalacao.md)
 3. [Instalando a aplicação de exemplo](3-Servicos.md)
-4. Expondo serviços via gateways
+4. [Expondo serviços via gateways](4-Gateways.md)
 5. Terminação de TLS no AWS Load Balancer
 6. Visão de roteamento de pacotes
 7. Autenticação de usuário final com JWT
