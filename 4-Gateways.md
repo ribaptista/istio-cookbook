@@ -44,7 +44,7 @@ A saída do comando acima nos mostra que foram criados quatro recursos em nosso 
 
 Antes de explorar o conteúdo dos arquivos de configuração que acabamos de aplicar, vamos testar nosso gateway.
 
-## <a name="testando"></a> Testando o gateway
+## <a name="encontrando_ip"></a> Encontrando o IP do gateway
 
 O Istio expõe o gateway que criamos através de um serviço chamado *ingress gateway*. 
 
@@ -84,6 +84,56 @@ istio-ingressgateway   LoadBalancer   10.100.236.210   10.100.236.210   15021:32
 
 Repare que agora o ingress gateway possui um ip externo, `10.100.236.210` (o valor exato do IP pode variar). 
 
+É através deste IP que acessaremos todos os microsserviços da nossa aplicação de exemplo.
+
+## <a name="acessando"></a> Acessando a aplicação
+
+Durante todos os testes a seguir, certifique-se de manter rodando o comando `minikube tunnel` (iniciado acima) em um terminal paralelo.
+
+Use o comando abaixo para testar o acesso ao microsserviços *users* através de nosso gateway:
+
+```console
+ricardo@ricardo-A60-MUV:~$ curl --resolve "my-sample-app.io:80:10.100.236.210" http://my-sample-app.io/users/profile
+{"id":101,"name":"John Doe","birthday":"1985-07-15","email":"johndoe@email.com"}
+```
+
+O retorno de sucesso acima indica que o nosso request atingiu em primeiro lugar o ingress gateway (de IP `10.100.236.210`),
+e foi roteado corretamente para o serviço *users*, que por sua vez retornou as informações pessoais do usuário.
+
+O gateway está funcionando! 🥳️🥳️🥳️
+
+### 💡💡💡 Entendendo o comando acima
+
+Nos arquivos de configuração do gateway que aplicamos nesta seção (mais especificamente [neste arquivo](code/4-Gateway/gateway.yaml)) 
+configuramos de forma fixa o gateway para responder no domínio `my-sample-app.io`, nesta linha:
+
+```yaml
+      hosts:
+        - my-sample-app.io
+```
+
+Por este motivo só é possível acessar a aplicação através do endereço `http://my-sample-app.io`.
+
+Uma vez que este domínio é fictício, ou seja, não somos realmente donos desse domínio na Internet, precisamos instruir 
+o comando curl a resolver esse domínio para o IP de nosso ingress gateway de forma artificial.
+
+Daí a necessidade do parâmetro `--resolve "my-sample-app.io:80:10.100.236.210"`.
+
+### 🦾 Desafio
+
+No tópico acima checamos que o gateway está roteando corretamente os requests destinado ao serviço *users*.
+
+Agora, verifique que o mesmo gateway é capaz de direcionar os requests destinados aos serviços *movies* e *dashboard*.
+
+Tente acessar as URLs abaixo usando o comando `curl`:
+
+* http://my-sample-app.io/movies/top
+* http://my-sample-app.io/movies/recommended/user/101
+* http://my-sample-app.io/dashboard/main
+
+Você consegue encontrar um padrão nas URLs acima? Qual trecho da URL parece indicar para qual microsserviço o gateway deve rotear o request?
+
+## <a name="roteamento"></a> Roteamento com Virtual Services
 
 ### 💡💡💡 Importante!
 
