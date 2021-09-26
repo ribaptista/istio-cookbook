@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: users
+spec:
+  hosts:
+    - my-sample-app.io
+  gateways:
+    - my-sample-app
+  http:
+    - match:
+        - uri:
+            prefix: /users/
+      rewrite:
+        uri: /
+      route:
+        - destination:
+            host: users.users.svc.cluster.local
+            port:
+              number: 80
