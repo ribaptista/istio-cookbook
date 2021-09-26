@@ -140,7 +140,7 @@ Com isso podemos concluir que este microsserviço não é, por si só, acessíve
 
 O mesmo ocorre com os outros dois microsserviços, *movies* e *dashboard*, por também possuem o mesmo tipo de serviço `ClusterIP` (você consegue deduzir os comandos para realizar o mesmo teste que fizemos acima para os outros dois microsserviços?)
 
-Na próxima seção introduziremos o Istio para fazer o papel de *gateway*, ou *BFF (backend for frontend)*, para expor os três microsserviços para acesso externo.
+Na próxima seção introduziremos o Istio para fazer o papel de *gateway* para expor os três microsserviços para acesso externo.
 
 Por ora, podemos usar uma função de *debug* do kubectl para acessar o serviço *users* temporariamente:
 
