@@ -1,4 +1,4 @@
-# Utilizando o Istio como gateway
+# ⛩️ Utilizando o Istio como gateway
 
 Na [seção anterior](3-Servicos.md) instalamos e inicializamos três microsserviços que compõe a nossa aplicação de exemplo: *users*, *movies* e *dashboard*.
 
@@ -10,11 +10,16 @@ são configurados para atender requests originados diretamente de dentro do clus
 Para expor os serviços externamente, para assim serem capazes de atender requests vindos da Internet (ou no nosso caso, vindos do nosso
 localhost, através do comando `curl`), iremos aplicar a funcionalidade de gateway do Istio.
 
-## Conteúdo desta seção
+## 📖 Conteúdo desta seção
 
-...
+* [Para que serve um gateway?](#para_que_serve)
+* [Instalação do gateway](#instalacao)
+* [Encontrando o IP do gateway](#encontrando_ip)
+* [Acessando a aplicação](#acessando)
+* [Roteamento com Virtual Services](#roteamento)
+* [Próximos passos](#proximos_passos)
 
-## <a name="para_que_serve"></a> Para que serve um gateway?
+## <a name="para_que_serve"></a> 🤔 Para que serve um gateway?
 
 Um *gateway* (do inglês "porta de entrada", ou "portal") é um serviço rodando em nosso cluster que é exposto externamente. 
 
@@ -25,7 +30,7 @@ os devidos microsserviços rodando internamente no cluster:
 
 ![Diagrama de gateway](img/4-Gateway.png)
 
-## <a name="instalacao"></a> Instalação do gateway
+## <a name="instalacao"></a> ✨ Instalação do gateway
 
 Este repositório contém [este diretório](https://github.com/ribaptista/istio-exemplos/tree/main/code/4-Gateway) com toda a configuração
 necessária para criar um gateway no Istio.
@@ -44,7 +49,7 @@ A saída do comando acima nos mostra que foram criados quatro recursos em nosso 
 
 Antes de explorar o conteúdo dos arquivos de configuração que acabamos de aplicar, vamos testar nosso gateway.
 
-## <a name="encontrando_ip"></a> Encontrando o IP do gateway
+## <a name="encontrando_ip"></a> 🕵️ Encontrando o IP do gateway
 
 O Istio expõe o gateway que criamos através de um serviço chamado *ingress gateway*. 
 
@@ -86,7 +91,7 @@ Repare que agora o ingress gateway possui um ip externo, `10.100.236.210` (o val
 
 É através deste IP que acessaremos todos os microsserviços da nossa aplicação de exemplo.
 
-## <a name="acessando"></a> Acessando a aplicação
+## <a name="acessando"></a> 🚀 Acessando a aplicação
 
 Durante todos os testes a seguir, certifique-se de manter rodando o comando `minikube tunnel` (iniciado acima) em um terminal paralelo.
 
@@ -167,7 +172,7 @@ Portanto, URLs como
 
 serão roteados para este virtual service, uma vez que todos tem o path iniciando com o padrão `/users/`.
 
-Finalmente, o trecho abaixo indica que todos os requests que chegarem a este virtual service deve ser encaminhados ao *kubernetes service* *users*:
+Finalmente, o trecho abaixo indica que todos os requests que chegarem a este virtual service devem ser encaminhados ao *kubernetes service* *users*:
 
 ```yaml
         - destination:
@@ -207,7 +212,7 @@ Por fim, teríamos um *virtual service* para cada microsserviço, ou *service* d
 Um virtual service está normalmente associado a um *gateway*, e, dos requests que chegam ao gateway, atende apenas a parcela que
 é destinada ao microsserviço em que atua.
 
-## <a name="proximos_passos"></a> Próximos passos
+## <a name="proximos_passos"></a> 👉 Próximos passos
 
 Muito bom! 🎉🎉🎉 Agora você já sabe como criar gateways para tornar os microsserviços no cluster acessíveis na Internet.
 
