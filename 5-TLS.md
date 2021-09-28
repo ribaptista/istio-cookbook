@@ -124,5 +124,5 @@ Você consegue agora identificar o motivo da mensagem de erro exibida?
 
 ## <a name="proximos_passos"></a> 🏃‍♀️ Próximos passos
 
-Parabéns! Agora toda comunicação entre o usuário final e a nossa aplicação ocorre em um canal seguro. 
+Parabéns! ✌️✌️✌️ Agora toda comunicação entre o usuário final e a nossa aplicação ocorre em um canal seguro. 
 Na próxima seção exploraremos as técnicas de autenticação e autorização de usuários oferecidas pelo Istio.
