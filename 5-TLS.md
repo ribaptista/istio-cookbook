@@ -2,7 +2,7 @@
 
 Até agora configuramos o Istio para servir uma aplicação respondendo no domínio `my-sample-app.io`.
 
-Na seção anterior utilizamos o protocolo HTTP em todos os requests feitos com o comando `curl` à aplicação
+Na [seção anterior](4-Gateways.md) utilizamos o protocolo HTTP em todos os requests feitos com o comando `curl` à aplicação
 (isto pode ser facilmente verificado pela porção inicial das URLs dos requests: `http://`)
 
 O protocolo HTTP trafega os dados entre o usuário e a aplicação em um canal não-criptografado, possibilitando
@@ -73,7 +73,7 @@ Você consegue identificar as diferenças?
 2. A porta usada no parâmetro `--resolve` agora é `443` (a porta padrão do protocolo HTTPS)
 3. Foi introduzido o parâmetro `-k`. Discutiremos este parâmetro mais adiante.
 
-## <a name="configuracao"></a> 🪛 Configuração de TLS no gateway 
+## <a name="configuracao"></a> 🔧 Configuração de TLS no gateway 
 
 Ao compararmos o conteúdo do [arquivo de configuração do gateway](code/5-TLS/gateway.yaml) desta seção com
 o do [arquivo da seção anterior](code/4-Gateway/gateway.yaml) identificamos as seguintes diferenças:
