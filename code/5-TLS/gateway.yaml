@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: my-sample-app
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 8443
+        name: https
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: server-tls
+      hosts:
+        - my-sample-app.io

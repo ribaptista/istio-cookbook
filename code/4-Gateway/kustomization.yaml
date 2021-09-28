@@ -4,3 +4,5 @@ kind: Kustomization
 resources:
   - gateway.yaml
   - virtualservice-users.yaml
+  - virtualservice-movies.yaml
+  - virtualservice-dashboard.yaml
