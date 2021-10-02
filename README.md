@@ -15,11 +15,10 @@ Para rodar os exemplos deste material é recomendada uma versão recente de algu
 2. [Instalando o Istio em um cluster de Kubernetes](2-Instalacao.md)
 3. [Instalando a aplicação de exemplo](3-Servicos.md)
 4. [Expondo serviços via gateways](4-Gateways.md)
-5. Terminação de TLS no AWS Load Balancer
-6. Visão de roteamento de pacotes
-7. Autenticação de usuário final com JWT
-8. Declarando rotas públicas
-9. Autenticação entre serviços com mTLS
-10. Expondo serviços GRPC
-11. Introduzindo falhas (Chaos Engineering)
+5. [Criptografia com TLS](5-TLS.md)
+6. Autenticação de usuário final com JWT
+7. Declarando rotas públicas
+8. Autenticação entre serviços com mTLS
+9. Expondo serviços GRPC
+10. Introduzindo falhas (Chaos Engineering)
 
