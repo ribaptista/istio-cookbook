@@ -14,4 +14,4 @@ spec:
         mode: SIMPLE
         credentialName: server-tls
       hosts:
-        - my-sample-app.io
+        - my-awesome-app.io
