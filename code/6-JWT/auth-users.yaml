@@ -2,11 +2,11 @@ apiVersion: security.istio.io/v1beta1
 kind: RequestAuthentication
 metadata:
   name: jwt-auth
-  namespace: movies
+  namespace: users
 spec:
   selector:
     matchLabels:
-      name: movies
+      app: users
   jwtRules:
     - issuer: "my-auth-server.io"
       jwksUri: https://raw.githubusercontent.com/ribaptista/istio-exemplos/main/code/6-JWT/jwks/jwks.json

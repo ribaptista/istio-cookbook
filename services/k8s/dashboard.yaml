@@ -4,6 +4,7 @@ metadata:
   name: dashboard
   labels:
     name: dashboard
+    istio-injection: enabled
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -46,6 +47,7 @@ spec:
   selector:
     app: dashboard
   ports:
-    - protocol: TCP
+    - name: http
+      protocol: TCP
       port: 80
       targetPort: 80
