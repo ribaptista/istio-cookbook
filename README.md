@@ -16,7 +16,7 @@ Para rodar os exemplos deste material é recomendada uma versão recente de algu
 3. [Instalando a aplicação de exemplo](3-Servicos.md)
 4. [Expondo serviços via gateways](4-Gateways.md)
 5. [Criptografia com TLS](5-TLS.md)
-6. Autenticação de usuário final com JWT
+6. [Autenticação de usuários com JWT](6-JWT.md)
 7. Declarando rotas públicas
 8. Autenticação entre serviços com mTLS
 9. Expondo serviços GRPC
