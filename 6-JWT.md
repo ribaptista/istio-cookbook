@@ -6,8 +6,14 @@ Nesta seção demonstraremos mais uma funcionalidade do Istio: a camada de auten
 
 ## Conteúdo desta seção
 
-* [Breve explicação sobre JWTs](#breve_explicacao)
-
+- [Breve explicação sobre JWTs](#breve_explicacao)
+- [Habilitando a autenticação na aplicação exemplo](#habilitando)
+- [Preparando o ambiente para os testes](#preparando)
+- [Testando a autenticação](#testando)
+- [Debugando JWTs](#debugando)
+- [Criando JWTs](#criando)
+- [Desafio](#desafio)
+- [Próximos passos](#proximos_passos)
 
 ## <a name="breve_explicacao"></a> Breve explicação sobre JWTs
 
