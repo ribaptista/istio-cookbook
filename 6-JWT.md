@@ -183,7 +183,21 @@ a assinatura criptográfica determinada pela chave presente no campo **Private K
 
 ## <a name="desafio"></a> Desafio
 
-Utilize o site token.dev para debugar o token utilizado no [cenário 4](#cenario_4): token falsificado. Qual alerta o site apresenta para este token?
+Utilize o site token.dev gerar um token com as seguintes características:
+
+* Deve ser emitido para o usuário de nome "John Joe"
+* Deve expirar em 1 hora
+* Deve ser assinado pela [mesma *private key*](https://raw.githubusercontent.com/ribaptista/istio-exemplos/main/code/6-JWT/keys/jwt.key) utilizada durante toda esta seção.
+
+Envie uma requisição com este token para a nossa aplicação na URL `https://my-sample-app.io/users/profile`:
+
+```console
+ricardo@ricardo-A60-MUV:~$ curl -H "Authorization: Bearer [Insira o conteúdo do seu token aqui]" -k --resolve "my-sample-app.io:443:10.100.236.210" -w "\n%{http_code}\n" https://my-sample-app.io/users/profile
+{"id":101,"name":"John Doe","birthday":"1985-07-15","email":"johndoe@email.com"}
+200
+```
+
+Para considerar o desafio como concluído, o retorno da requisição deve ser bem-sucedido como a saída acima.
 
 ## <a name="proximos_passos"></a> Próximos passos
 
