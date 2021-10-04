@@ -66,7 +66,7 @@ do repositório.
 
 Entretanto, ao final desta seção você aprenderá como debugar o conteúdo de JWTs e como criar seus próprios JWTs! 
 
-### Cenário 1: Request anônimo
+### <a name="cenario_1"></a> Cenário 1: Request anônimo
 
 Neste primeiro cenário, enviaremos à aplicação um request anônimo, ou seja, desprovido de um token JWT. 
 
@@ -80,7 +80,7 @@ RBAC: access denied
 
 Se você recebeu o código de erro `403` (Forbidden) como a saída exibida acima, o Istio já está protegendo o microsserviço *users* contra requests não-autenticados!
 
-### Cenário 2: Enviando um token válido
+### <a name="cenario_2"></a> Cenário 2: Enviando um token válido
 
 Agora testaremos um cenário de sucesso. 
 
@@ -96,7 +96,7 @@ ricardo@ricardo-A60-MUV:~$ curl -H "Authorization: Bearer $(curl https://raw.git
 O código `200` (OK) e o JSON com os dados de profile do usuário recebidos na saída acima indicam que o Istio 
 reconheceu a legitimidade do token e assim permitiu o acesso ao microsserviço *users*.  
 
-### Cenário 3: Token expirado
+### <a name="cenario_3"></a> Cenário 3: Token expirado
 
 Por motivos de segurança, todo token emitido por servidores de autenticação incluem um metadado chamado `exp`, que representa
 o timestamp (data e hora) de expiração do token.
@@ -113,7 +113,7 @@ Jwt is expired
 
 A mensagem `Jwt is expired` retornada pelo Istio indica que nossa aplicação está protegida contra tokens expirados.
 
-### Cenário 4: Token falsificado
+### <a name="cenario_4"></a> Cenário 4: Token falsificado
 
 Retomaremos aqui os conceitos de *private* e *public keys* introduzidos no início desta seção.
 
@@ -145,8 +145,47 @@ Jwt verification fails
 Assim, constatamos pelo retorno do comando acima que o Istio bloqueia qualquer tentativa de acesso que não inclua um
 token JWT emitido e assinado pelo servidor de autenticação de confiança da aplicação.
 
+## <a name="debugando"></a> Debugando JWTs
 
+Os JWTs estáticos dos experimentos acima foram criados no site [token.dev](https://token.dev/).
 
+Uma vez no token.dev, vamos examinar o conteúdo nosso [exemplo](https://github.com/ribaptista/istio-exemplos/blob/main/code/6-JWT/samples/expired.jwt) de token expirado:
 
+1. No campo **Algorithm**, selecione `RS256`.
+2. No campo **JWT String**, cole o conteúdo do arquivo [expired.jwt](https://raw.githubusercontent.com/ribaptista/istio-exemplos/main/code/6-JWT/samples/expired.jwt)
+3. No campo **Public key** cole o conteúdo do arquivo [jwt.pub](https://raw.githubusercontent.com/ribaptista/istio-exemplos/main/code/6-JWT/keys/jwt.pub)
+4. No campo **Private key** cole o conteúdo do arquivo [jwt.key](https://raw.githubusercontent.com/ribaptista/istio-exemplos/main/code/6-JWT/keys/jwt.key)
 
+O campo **Payload** exibirá o conteúdo do JWT em formato JSON:
 
+```json
+{
+  "sub": "1234567890",
+  "name": "John Doe",
+  "iat": 1516239022,
+  "iss": "my-auth-server.io",
+  "exp": 1516249022
+}
+```
+
+O site exibe o seguinte alerta sobre a validade do token:
+
+![Expired token alert](img/6-JWT-expired.png)
+
+Ao passar o cursor sobre o campo `exp` o site exibirá um tooltip com o alerta de expiração do token.
+
+## <a name="criando"></a> Criando JWTs
+
+Ainda com os dados do token carregados no token.dev, é possível editar o conteúdo do campo **Payload** (por exemplo, alterando o conteúdo do campo `name`).
+
+O conteúdo do campo **JWT String** será automaticamente alterado para refletir as alterações feitas na representação JSON do JWT, incluindo
+a assinatura criptográfica determinada pela chave presente no campo **Private Key**.
+
+## <a name="desafio"></a> Desafio
+
+Utilize o site token.dev para debugar o token utilizado no [cenário 4](#cenario_4): token falsificado. Qual alerta o site apresenta para este token?
+
+## <a name="proximos_passos"></a> Próximos passos
+
+Muito bem! Nesta seção entendemos como aumentar a segurança de uma aplicação implementado diretamente no Istio a autenticação de usuário final baseada em JWT.
+Na próxima seção nos aprofundaremos na segurança de nossa aplicação ativando a autenticação bidirecional entre microsserviços.
