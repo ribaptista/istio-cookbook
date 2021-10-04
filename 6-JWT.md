@@ -23,7 +23,7 @@ Nesta seção demonstraremos mais uma funcionalidade do Istio: a camada de auten
 
 JWTs são tokens emitidos por um servidor de autenticação imediatamente após o login de um usuário.
 
-O token emitido é então enviado pelo frontend em todas as requisições para o backend aplicação final. 
+O token emitido é então enviado pelo frontend em todas as requisições para o backend da aplicação final. 
 
 Apenas requisições contendo tokens legítimos e dentro do prazo de expiração são consideradas pela aplicação final. 
 
