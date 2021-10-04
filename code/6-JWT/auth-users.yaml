@@ -10,3 +10,16 @@ spec:
   jwtRules:
     - issuer: "my-auth-server.io"
       jwksUri: https://raw.githubusercontent.com/ribaptista/istio-exemplos/main/code/6-JWT/jwks/jwks.json
+
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: jwt-auth
+  namespace: users
+spec:
+  action: ALLOW
+  rules:
+    - from:
+        - source:
+            requestPrincipals: ["*"]
