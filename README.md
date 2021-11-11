@@ -1,4 +1,4 @@
-# istio-exemplos
+# istio-cookbook
 
 Este material demonstra o uso do Istio para atender os cenários mais comuns de aplicações web.
 
